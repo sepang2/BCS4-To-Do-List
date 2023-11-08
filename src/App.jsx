@@ -1,5 +1,29 @@
+import { useState } from "react";
+import CreateTodo from "./components/CreateTodo";
+import Todo from "./components/Todo";
+
 const App = () => {
-  return <div className="bg-red-100">Goodbye, React!</div>;
+  const [todoId, setTodoId] = useState(2);
+
+  const [todos, setTodos] = useState([
+    { id: 1, title: "🍎 Apple", isDone: false },
+  ]);
+
+  return (
+    <main className="min-h-screen py-20 flex flex-col justify-start items-center">
+      <CreateTodo
+        todos={todos}
+        setTodos={setTodos}
+        todoId={todoId}
+        setTodoId={setTodoId}
+      />
+      <ul>
+        {todos.map((v, i) => {
+          return <Todo key={i} todo={v} todos={todos} setTodos={setTodos} />;
+        })}
+      </ul>
+    </main>
+  );
 };
 
 export default App;
