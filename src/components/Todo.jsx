@@ -1,4 +1,4 @@
-const Todo = ({ todo, todos, setTodos }) => {
+const Todo = ({ todo, todos, setTodos, index }) => {
   const onClickDone = () => {
     const newTodos = todos.map((v, i) => {
       if (todo.id === v.id)
@@ -18,15 +18,20 @@ const Todo = ({ todo, todos, setTodos }) => {
   };
 
   return (
-    <li>
-      <span>{todo.id}</span>
+    <li className={`w-96 p-4 ${index % 2 ? "bg-gray-300" : "bg-gray-100"}`}>
+      <span className="w-2/12 inline-block text-center">{todo.id}</span>
       <button
-        className={`${todo.isDone && "line-through"}`}
+        className={`w-9/12 inline-block ${todo.isDone && "line-through"}`}
         onClick={onClickDone}
       >
         {todo.title}
       </button>
-      <button onClick={onClickDel}>Del</button>
+      <button
+        className="w-1/12 inline-block text-center hover:text-red-600"
+        onClick={onClickDel}
+      >
+        Del
+      </button>
     </li>
   );
 };

@@ -17,9 +17,17 @@ const App = () => {
         todoId={todoId}
         setTodoId={setTodoId}
       />
-      <ul>
+      <ul className="mt-8">
         {todos.map((v, i) => {
-          return <Todo key={i} todo={v} todos={todos} setTodos={setTodos} />;
+          return (
+            <Todo
+              key={i}
+              index={i}
+              todo={v}
+              todos={todos}
+              setTodos={setTodos}
+            />
+          );
         })}
       </ul>
     </main>
